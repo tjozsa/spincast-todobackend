@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Publish Artifact') {
             steps {
-                withEnv(["ARTIFACTORY_SERVER_URL=${env.ARTIFACTORY_SERVER}", "ARTIFACTORY_LOGIN=admin", "ARTIFACTORY_PASSWORD=password", "ARTIFACT=spincast-todobackend-inmemory-1.0.2.jar"], "WORKSPACE=${env.JOB_NAME}") {
+                withEnv(["ARTIFACTORY_SERVER_URL=${env.ARTIFACTORY_SERVER}", "ARTIFACTORY_LOGIN=admin", "ARTIFACTORY_PASSWORD=password", "ARTIFACT=spincast-todobackend-inmemory-1.0.2.jar", "WORKSPACE=${env.JOB_NAME}"]) {
                     sh 'curl -u ${ARTIFACTORY_LOGIN}:${ARTIFACTORY_PASSWORD} -X PUT "${ARTIFACTORY_SERVER_URL}/artifactory/libs-snapshot-local/${WORKSPACE}/${ARTIFACT}" -T /var/jenkins_home/workspace/${WORKSPACE}/spincast-todobackend-inmemory/target/${ARTIFACT}'
                 }
             }

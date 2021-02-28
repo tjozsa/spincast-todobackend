@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Integration') {
             steps {
-                junit 'target/surefire-reports/*.xml'
+                junit '**/*.xml'
             }
         }
         stage('Publish Artifact') {

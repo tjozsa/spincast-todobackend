@@ -15,6 +15,7 @@ pipeline {
             steps {
                echo 'Run tests here...'
                sh 'mvn test'
+               archiveArtifacts 'target/surefire-reports/*.xml'
             }
         }
         stage('Integration') {

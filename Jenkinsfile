@@ -16,12 +16,13 @@ pipeline {
                echo 'Run tests here...'
                sh 'mvn test'
             }
-        }
-        post {
-            success {
-                junit 'target/surefire-reports/*.xml'
+            post {
+                success {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
+        
         stage('Publish Artifact') {
             steps {
                 withEnv(["ARTIFACTORY_SERVER_URL=${env.ARTIFACTORY_SERVER}", "ARTIFACTORY_LOGIN=admin", "ARTIFACTORY_PASSWORD=password", "ARTIFACT=spincast-todobackend-inmemory-1.0.2.jar", "WORKSPACE=${env.JOB_NAME}"]) {

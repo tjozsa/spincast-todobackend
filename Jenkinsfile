@@ -14,6 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                echo 'Run tests here...'
+               sh 'mvn test'
             }
         }
         stage('Publish Artifact') {

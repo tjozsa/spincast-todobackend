@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Integration') {
             steps {
-                junit '**/*.xml'
+                junit 'spincast-todobackend-inmemory/target/surefire-reports/*.xml'
             }
         }
         stage('Publish Artifact') {
